@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aefos AI — Pricing (rascunho)</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#141a24; --panel2:#1b2430; --bd:#283142; --fg:#e6edf3;
+    --muted:#9aa7b4; --accent:#7c5cff; --cyan:#2bd1ff; --orange:#ff7a45; --green:#3fb950;
+    --grad:linear-gradient(90deg,#7c5cff,#2bd1ff);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,#16203022,transparent),var(--bg);
+    color:var(--fg);font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:36px 20px 80px}
+  .draft{background:#3a2a12;border:1px solid #6b4e1f;color:#ffd591;border-radius:10px;
+    padding:10px 14px;font-size:13px;margin-bottom:24px;text-align:center}
+  header{text-align:center;margin-bottom:8px}
+  h1{font-size:34px;margin:0 0 6px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);margin:0 0 4px}
+  .acr{color:var(--muted);font-size:13px}
+  .toggles{display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;margin:24px 0 8px}
+  .seg{display:inline-flex;background:var(--panel);border:1px solid var(--bd);border-radius:999px;padding:4px}
+  .seg button{border:0;background:transparent;color:var(--muted);padding:7px 16px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:600}
+  .seg button.on{background:var(--accent);color:#fff}
+  .save{color:var(--green);font-size:12px;font-weight:700}
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:26px}
+  @media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--bd);border-radius:16px;padding:20px;display:flex;flex-direction:column;position:relative}
+  .card.pop{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 12px 40px #7c5cff22}
+  .badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--grad);
+    color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:999px;letter-spacing:.3px}
+  .badge.lim{background:linear-gradient(90deg,#ff7a45,#ffb45e)}
+  .tier{font-size:18px;font-weight:700;margin:2px 0 2px}
+  .tagline{color:var(--muted);font-size:12.5px;min-height:34px;margin-bottom:12px}
+  .price{font-size:30px;font-weight:800;line-height:1}
+  .price small{font-size:13px;color:var(--muted);font-weight:600}
+  .billed{color:var(--muted);font-size:12px;min-height:18px;margin-top:6px}
+  .cta{margin:16px 0 14px;display:block;text-align:center;text-decoration:none;border-radius:10px;
+    padding:10px;font-weight:700;font-size:14px}
+  .cta.primary{background:var(--grad);color:#fff}
+  .cta.ghost{background:transparent;border:1px solid var(--bd);color:var(--fg)}
+  ul.feat{list-style:none;padding:0;margin:0;font-size:13px}
+  ul.feat li{padding:6px 0;border-top:1px solid var(--bd);color:#cdd7e1}
+  ul.feat li:first-child{border-top:0}
+  ul.feat li b{color:#fff}
+  .lic{margin:34px 0 0;background:var(--panel2);border:1px solid var(--bd);border-radius:14px;padding:18px 20px}
+  .lic h3{margin:0 0 8px;font-size:16px}
+  .lic p{margin:6px 0;color:var(--muted);font-size:13.5px}
+  .pill{display:inline-block;background:#0e1622;border:1px solid var(--bd);border-radius:999px;
+    padding:2px 10px;font-size:12px;color:#cdd7e1;margin:2px 4px 2px 0}
+  h2.cmp{margin:46px 0 14px;font-size:22px;text-align:center}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+  th,td{padding:11px 12px;border-top:1px solid var(--bd);text-align:center}
+  th:first-child,td:first-child{text-align:left;color:#cdd7e1}
+  thead th{background:var(--panel2);font-size:13px}
+  thead th.pop{color:#fff;background:#241d3a}
+  .y{color:var(--green);font-weight:700}
+  .n{color:#5b6675}
+  .small{color:var(--muted);font-size:12px}
+  footer{margin-top:40px;text-align:center;color:var(--muted);font-size:12.5px}
+  .row-cat{background:#0e1622;color:#8aa0b6;font-weight:700;text-align:left}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="draft">⚠️ RASCUNHO / PROPOSTA para visualização — valores não finais. Aefos = <b>Agent Execution Flow Orchestration System</b>.</div>
+
+  <header>
+    <h1>Aefos AI — Planos</h1>
+    <p class="sub">A IA que você já usa, pilotando o seu Delphi. Traga seu CLI — o Aefos faz ele dirigir a IDE.</p>
+    <p class="acr">Preço por desenvolvedor (seat) · 1 máquina ativa por vez · transferível</p>
+  </header>
+
+  <div class="toggles">
+    <div class="seg" id="period">
+      <button data-p="mo" class="on">Mensal</button>
+      <button data-p="yr">Anual <span class="save">−17%</span></button>
+    </div>
+    <div class="seg" id="cur">
+      <button data-c="brl" class="on">🇧🇷 BRL</button>
+      <button data-c="usd">🌐 USD</button>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <!-- COMMUNITY -->
+    <div class="card">
+      <div class="tier">Community</div>
+      <div class="tagline">Para experimentar e usar no dia a dia, de graça.</div>
+      <div class="price" data-price="community">Grátis</div>
+      <div class="billed">para sempre</div>
+      <a class="cta ghost" href="#">Baixar</a>
+      <ul class="feat">
+        <li>Chat na IDE + <b>modo Agent</b></li>
+        <li>Provedores: <b>Gemini + Copilot</b> (sua API)</li>
+        <li>A IA edita código / designer / build</li>
+        <li>Diff inline (aceitar/rejeitar)</li>
+        <li>Terminal (<b>sem MCP</b>)</li>
+        <li>Tudo manual (config à mão)</li>
+        <li>Suporte da comunidade</li>
+      </ul>
+    </div>
+
+    <!-- PRO -->
+    <div class="card pop">
+      <div class="badge">MAIS POPULAR</div>
+      <div class="tier">Pro</div>
+      <div class="tagline">Claude &amp; Codex na IDE + a IA pilotando o Delphi.</div>
+      <div class="price" data-price="pro">—</div>
+      <div class="billed" data-billed="pro"></div>
+      <a class="cta primary" href="#">Assinar Pro</a>
+      <ul class="feat">
+        <li><b>Tudo do Community, e mais:</b></li>
+        <li>Provedores: <b>+ Claude + Codex</b></li>
+        <li><b>Terminal + MCP</b> (IA dirige a IDE)</li>
+        <li><b>AI Flow</b> — reload silencioso</li>
+        <li>Auto-create (MCP, comandos)</li>
+        <li>Histórico + templates</li>
+        <li>Contexto avançado · updates prioritários</li>
+      </ul>
+    </div>
+
+    <!-- FOUNDER -->
+    <div class="card">
+      <div class="badge lim">VAGAS LIMITADAS</div>
+      <div class="tier">Founder</div>
+      <div class="tagline">Pague uma vez, use para sempre. Apoie o lançamento.</div>
+      <div class="price" data-price="founder">—</div>
+      <div class="billed" data-billed="founder"></div>
+      <a class="cta ghost" href="#">Virar Founder</a>
+      <ul class="feat">
+        <li><b>Todo o Pro — vitalício</b> (linha Chat)</li>
+        <li>Updates para sempre</li>
+        <li>Selo de Founder</li>
+        <li>Lote 1: <b>preço de lançamento</b></li>
+        <li class="small">Limitado às primeiras ~200 vagas</li>
+      </ul>
+    </div>
+
+    <!-- TEAM -->
+    <div class="card">
+      <div class="tier">Team</div>
+      <div class="tagline">Para squads. Cobrança e gestão centralizadas.</div>
+      <div class="price" data-price="team">—</div>
+      <div class="billed" data-billed="team"></div>
+      <a class="cta ghost" href="#">Falar com vendas</a>
+      <ul class="feat">
+        <li><b>Todo o Pro para até 10 devs</b></li>
+        <li>Painel de administração</li>
+        <li>Cobrança unificada</li>
+        <li>Onboarding do time</li>
+      </ul>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="card">
+      <div class="tier">Enterprise</div>
+      <div class="tagline">Para times maiores e empresas reguladas.</div>
+      <div class="price">Sob consulta</div>
+      <div class="billed">contrato anual sob medida</div>
+      <a class="cta ghost" href="#">Falar com vendas</a>
+      <ul class="feat">
+        <li>Licenças por volume / floating</li>
+        <li>SSO &amp; governança</li>
+        <li>Conformidade (LGPD, CRA) · auditoria de SBOM</li>
+        <li>Suporte dedicado · SLA</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Licensing note -->
+  <div class="lic">
+    <h3>🔑 Como a licença funciona</h3>
+    <p>Cada assinatura é <b>1 seat = 1 desenvolvedor</b>, com <b>1 máquina ativa por vez</b> e
+       <b>transferência livre</b> (self-transfer): desative numa máquina para usar em outra.</p>
+    <p>O vínculo é por <b>(máquina + usuário Windows + versão do RAD Studio)</b> — então a IDE
+       <b>32-bit e a 64-bit</b> do Delphi 13 na mesma máquina contam como <b>um seat só</b>.</p>
+    <span class="pill">Node-locked</span>
+    <span class="pill">Self-transfer incluso</span>
+    <span class="pill">Funciona offline (janela de tolerância)</span>
+    <span class="pill">Trial Pro de 14 dias</span>
+    <span class="pill">Community grátis também por seat</span>
+  </div>
+
+  <!-- Comparison -->
+  <h2 class="cmp">Comparativo completo</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Recurso</th>
+        <th>Community</th>
+        <th class="pop">Pro</th>
+        <th>Founder</th>
+        <th>Team</th>
+        <th>Enterprise</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-cat"><td colspan="6">Chat &amp; Agente</td></tr>
+      <tr><td>Chat na IDE + modo Agent</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>Provedores de IA</td><td>Gemini, Copilot</td><td class="pop">+ Claude, Codex</td><td>Todos</td><td>Todos</td><td>Todos</td></tr>
+      <tr><td>A IA age no projeto (editar, designer, build, git)</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>Diff inline (aceitar/rejeitar)</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr class="row-cat"><td colspan="6">Terminal &amp; Automação</td></tr>
+      <tr><td>Terminal docado</td><td>sem MCP</td><td class="y">+ MCP</td><td class="y">+ MCP</td><td class="y">+ MCP</td><td class="y">+ MCP</td></tr>
+      <tr><td>AI Flow (reload silencioso)</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>Auto-create (MCP, comandos)</td><td>manual</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>Histórico + templates</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr><td>Contexto avançado de projeto</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+      <tr class="row-cat"><td colspan="6">Licença &amp; Suporte</td></tr>
+      <tr><td>Seats</td><td>1</td><td>1</td><td>1</td><td>até 10</td><td>custom</td></tr>
+      <tr><td>Updates</td><td>comunidade</td><td>prioritários</td><td>vitalícios</td><td>prioritários</td><td>prioritários</td></tr>
+      <tr><td>Suporte</td><td>comunidade</td><td>e-mail</td><td>e-mail</td><td>prioritário</td><td>SLA</td></tr>
+      <tr><td>SSO / governança</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    Aefos AI · proprietário (EULA, Community grátis incl. uso empresarial) ·
+    <a href="https://github.com/ModernDelphiWorks/Aefos" style="color:var(--cyan)">github.com/ModernDelphiWorks/Aefos</a><br>
+    Rascunho de pricing — ajuste os valores antes de publicar.
+  </footer>
+
+</div>
+
+<script>
+  // ---- Price model (edit here to tweak) ----
+  var DATA = {
+    brl: {
+      pro:     { mo:{price:"R$ 29,90", billed:"cobrado mensalmente"},
+                 yr:{price:"R$ 24,90", billed:"/mês · cobrado anual (R$ 299/ano)"} },
+      founder: { mo:{price:"R$ 197",   billed:"pagamento único · lançamento R$ 97"},
+                 yr:{price:"R$ 197",   billed:"pagamento único · lançamento R$ 97"} },
+      team:    { mo:{price:"R$ 199",   billed:"/mês · até 10 devs"},
+                 yr:{price:"R$ 165",   billed:"/mês · cobrado anual (R$ 1.990/ano)"} }
+    },
+    usd: {
+      pro:     { mo:{price:"US$ 6",  billed:"billed monthly"},
+                 yr:{price:"US$ 4.90", billed:"/mo · billed yearly (US$ 59/yr)"} },
+      founder: { mo:{price:"US$ 39", billed:"one-time · launch US$ 19"},
+                 yr:{price:"US$ 39", billed:"one-time · launch US$ 19"} },
+      team:    { mo:{price:"US$ 39", billed:"/mo · up to 10 devs"},
+                 yr:{price:"US$ 32", billed:"/mo · billed yearly (US$ 390/yr)"} }
+    }
+  };
+  var state={cur:"brl",p:"mo"};
+  var freeLabel={brl:"Grátis",usd:"Free"}, foreverLabel={brl:"para sempre",usd:"forever"};
+
+  function render(){
+    var d=DATA[state.cur];
+    ["pro","founder","team"].forEach(function(k){
+      var el=document.querySelector('[data-price="'+k+'"]');
+      var bl=document.querySelector('[data-billed="'+k+'"]');
+      if(el){ el.textContent = d[k][state.p].price; }
+      if(bl){ bl.textContent = d[k][state.p].billed; }
+    });
+    var comm=document.querySelector('[data-price="community"]');
+    if(comm) comm.textContent=freeLabel[state.cur];
+  }
+  document.querySelectorAll('#period button').forEach(function(b){
+    b.onclick=function(){state.p=b.dataset.p;
+      document.querySelectorAll('#period button').forEach(x=>x.classList.remove('on'));b.classList.add('on');render();};
+  });
+  document.querySelectorAll('#cur button').forEach(function(b){
+    b.onclick=function(){state.cur=b.dataset.c;
+      document.querySelectorAll('#cur button').forEach(x=>x.classList.remove('on'));b.classList.add('on');render();};
+  });
+  render();
+</script>
+</body>
+</html>
