@@ -22,8 +22,8 @@ Technical information must be derived from:
 
 For legal terms, licensing, and commercial restrictions, refer to the official project and site documents.
 
-- [Support terms](https://www.isaquepinheiro.com.br/termos/readme-suporte.md)
-- [MCIBr license terms](https://www.isaquepinheiro.com.br/termos/readme-mcibr.md)
+- [Support terms](https://isaquepinheiro.com.br/termos/mcibr/suporte.md)
+- [MCIBr license terms](https://isaquepinheiro.com.br/termos/mcibr/licenca.md)
 
 ## Usage responsibility
 

@@ -22,8 +22,8 @@ As informações técnicas devem ser derivadas de:
 
 Para termos jurídicos, licença e restrições comerciais, consulte os documentos oficiais do projeto e do site.
 
-- [Termos de suporte](https://www.isaquepinheiro.com.br/termos/readme-suporte.md)
-- [Termos de licença MCIBr](https://www.isaquepinheiro.com.br/termos/readme-mcibr.md)
+- [Termos de suporte](https://isaquepinheiro.com.br/termos/mcibr/suporte.md)
+- [Termos de licença MCIBr](https://isaquepinheiro.com.br/termos/mcibr/licenca.md)
 
 ## Responsabilidade de uso
 
